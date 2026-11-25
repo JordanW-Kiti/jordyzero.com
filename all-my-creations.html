@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="dark light">
     <meta name="description" content="JORDY ZERO : des outils, des wallpapers et des expériences numériques pour un bureau qui vous ressemble. Découvrez Stickyverse, BK3D et Golden Black Hol.">
-    <meta property="og:title" content="JORDY ZERO — Applications &amp; wallpapers">
+    <meta property="og:title" content="JORDY ZERO | Applications &amp; wallpapers">
     <meta property="og:description" content="Stickyverse, BK3D et Golden Black Hol. Les créations numériques de Jordan Kiti.">
     <meta property="og:image" content="https://public-files.gumroad.com/4kd58m6icjn87jstgczyxhbuwusx">
     <meta property="og:url" content="https://jordyzero.com/">
     <meta property="og:type" content="website">
-    <title>Toutes mes créations — JORDY ZERO</title>
+    <title>Toutes mes créations | JORDY ZERO</title>
     <style>
 :root {
   color-scheme: dark;
@@ -224,6 +224,11 @@ h3 {
 }
 
 /* "SHOP" next to the name ("PORTFOLIO" on portfolio.jordyzero.com): same type, inverted box. */
+.nav a svg {
+  margin-left: 4px;
+  font-size: 0.85em;
+}
+
 .logo-tag {
   margin-left: 6px;
   padding: 2px 6px 1px;
@@ -1493,6 +1498,42 @@ details p {
   .controls {
     gap: 4px;
   }
+}
+
+/* Narrow phones: logo, SHOP and the three buttons stay on one line. */
+@media (max-width: 430px) {
+  .logo {
+    font-size: 16px;
+  }
+
+  .logo svg {
+    font-size: 21px;
+  }
+
+  .controls .control {
+    min-width: 40px;
+    min-height: 40px;
+    padding: 6px;
+  }
+}
+
+@media (max-width: 380px) {
+  :root {
+    --gutter: 12px;
+  }
+
+  .header {
+    gap: 4px;
+  }
+
+  .controls {
+    gap: 2px;
+  }
+
+  .controls .control {
+    min-width: 38px;
+    min-height: 38px;
+  }
 
   .menu-toggle {
     display: flex;
@@ -1557,6 +1598,7 @@ details p {
   .menu-open .nav > a:nth-child(5) { transition-delay: 170ms; }
   .menu-open .nav > a:nth-child(6) { transition-delay: 195ms; }
   .menu-open .nav > a:nth-child(7) { transition-delay: 220ms; }
+  .menu-open .nav > a:nth-child(8) { transition-delay: 245ms; }
 
   .nav {
     order: 3;
@@ -2362,9 +2404,9 @@ const english = {
   explore: "Explore the collection",
   meetZero: "About JORDY ZERO",
   spotlight: "Featured creation / 01",
-  featureText: "Stickyverse — A place for your ideas.",
+  featureText: "Stickyverse. A place for your ideas.",
   featureCaption: "Desktop application",
-  collectionLabel: "01 — The collection",
+  collectionLabel: "01 / The collection",
   collectionTitle: "Apps & wallpapers.",
   filterAll: "View all",
   filterApps: "Apps",
@@ -2383,7 +2425,7 @@ const english = {
   animatedTag: "Animated wallpaper · MP4",
   goldenPrice: "€2.50",
   goldenDescription: "A cosmic touch. Black, gold and motion to give your screen another dimension.",
-  studioLabel: "02 — About",
+  studioLabel: "02 / About",
   studioName: "WILLY JORDAN KITI",
   studioRole: "Graphic designer.",
   studioText: "Passionate about branding, motion design and illustration, I bring ideas to life through visual identities, animation and digital experiences. Curious and detail-driven, I enjoy exploring new tools and connecting imagery, movement and interaction. From logos to wallpapers and apps like Stickyverse, every project is another way to create without limits.",
@@ -2396,9 +2438,9 @@ const english = {
   subscribe: "Count me in",
   emailNote: "You can unsubscribe at any time.",
   follow: "Follow JORDY ZERO",
-  footerHome: "JORDY ZERO — Back to top",
+  footerHome: "JORDY ZERO, back to top",
   backTop: "Back to top",
-  home: "JORDY ZERO — Home",
+  home: "JORDY ZERO, home",
   navigation: "Main navigation",
   menu: "Navigation menu",
   theme: "Toggle dark mode",
@@ -2930,7 +2972,7 @@ document.addEventListener("contextmenu", event => {
     <a class="skip" href="#main" data-i18n="skip">Aller au contenu</a>
 
     <header class="header wrap">
-      <a class="logo" href="https://jordyzero.com/" aria-label="JORDY ZERO — Accueil" data-label="home">
+      <a class="logo" href="https://jordyzero.com/" aria-label="JORDY ZERO, accueil" data-label="home">
         <svg aria-hidden="true" viewBox="0 0 110 110" fill="currentColor">
         <path d="M55.15,96.87c1.51-11.66,5.04-22.22,10.34-31.81l-7,.03-3.31,10.41-1.71-5.17,5.2-15.77-9.86,2.51,1.93.21-4.37,13.28c5.32,5.95,7.18,15.98,8.78,26.32Z"/>
         <polygon points="65.93 63.74 58.9 63.74 59.79 61.15 57.95 61.15 59.95 55 68.82 54.98 65.93 63.74"/>
@@ -2948,6 +2990,9 @@ document.addEventListener("contextmenu", event => {
         <a href="https://jordyzero.com/wallpapers" data-i18n="navWallpapers">Wallpapers</a>
         <a href="https://jordyzero.com/illustrations" data-i18n="navIllustrations">Illustrations</a>
         <a href="https://jordyzero.com/procreate-brusche" data-i18n="navBrushesShort">Pinceaux</a>
+        <a href="https://portfolio.jordyzero.com/" target="_blank" rel="noopener">Portfolio <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M5 19 19 5M5 5h14v14" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      </svg></a>
         <a href="https://jordyzero.com/contact" data-i18n="navContact">Contact</a>
         <div class="collection-search" id="collection-search" role="search" hidden>
           <label for="product-search" data-i18n="searchLabel">RECHERCHER UNE CRÉATION</label>
@@ -3051,7 +3096,7 @@ document.addEventListener("contextmenu", event => {
       </section></main>
 
     <footer class="footer wrap">
-      <a class="footer-word" href="#main" aria-label="JORDY ZERO — Retour en haut" data-label="footerHome"><span>JORDY ZERO</span><svg aria-hidden="true" viewBox="0 0 110 110" fill="currentColor">
+      <a class="footer-word" href="#main" aria-label="JORDY ZERO, retour en haut" data-label="footerHome"><span>JORDY ZERO</span><svg aria-hidden="true" viewBox="0 0 110 110" fill="currentColor">
         <path d="M55.15,96.87c1.51-11.66,5.04-22.22,10.34-31.81l-7,.03-3.31,10.41-1.71-5.17,5.2-15.77-9.86,2.51,1.93.21-4.37,13.28c5.32,5.95,7.18,15.98,8.78,26.32Z"/>
         <polygon points="65.93 63.74 58.9 63.74 59.79 61.15 57.95 61.15 59.95 55 68.82 54.98 65.93 63.74"/>
         <path d="M96.32,55c-11.34.92-21.35,3.11-28.06,8.5l-1.9,3.26,4.33-13.12h-8.41l3.15-9.39c8.78,6.69,19.33,9.75,30.89,10.75Z"/>
