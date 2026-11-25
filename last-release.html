@@ -223,6 +223,17 @@ h3 {
   font-size: 32px;
 }
 
+/* "SHOP" next to the name ("PORTFOLIO" on portfolio.jordyzero.com): same type, inverted box. */
+.logo-tag {
+  margin-left: 6px;
+  padding: 2px 6px 1px;
+  background: var(--ink);
+  color: var(--bg);
+  font: 900 0.72em/1.1 Arial, Helvetica, sans-serif;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
 .nav {
   display: flex;
   flex: 1;
@@ -2918,7 +2929,7 @@ document.addEventListener("contextmenu", event => {
         <polygon points="44.07 46.26 51.1 46.26 50.21 48.85 52.05 48.85 50.05 55 41.18 55.02 44.07 46.26"/>
         <path d="M13.68,55c11.34-.92,21.35-3.11,28.06-8.5l1.9-3.26-4.33,13.12h8.41l-3.15,9.39c-8.78-6.69-19.33-9.75-30.89-10.75Z"/>
       </svg>
-        JORDY ZERO
+        JORDY ZERO <span class="logo-tag">SHOP</span>
       </a>
       <nav class="nav" id="main-navigation" aria-label="Navigation principale" data-label="navigation">
         <a href="https://jordyzero.com/all-my-creations" data-i18n="navAllShort">Créations</a>
