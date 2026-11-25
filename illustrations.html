@@ -2889,6 +2889,11 @@ document.getElementById("year").textContent = String(new Date().getFullYear());
 document.getElementById("controls").hidden = false;
 if (filters) filters.hidden = products.length < 2;
 document.getElementById("collection-search").hidden = !document.getElementById("product-results");
+
+// Videos: no right-click menu ("Save video as", "Copy video address").
+document.addEventListener("contextmenu", event => {
+  if (event.target instanceof Element && event.target.closest("video")) event.preventDefault();
+});
 </script>
       <link rel="canonical" href="https://jordyzero.com/illustrations">
     <meta name="robots" content="noindex">

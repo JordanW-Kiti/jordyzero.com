@@ -2889,6 +2889,11 @@ document.getElementById("year").textContent = String(new Date().getFullYear());
 document.getElementById("controls").hidden = false;
 if (filters) filters.hidden = products.length < 2;
 document.getElementById("collection-search").hidden = !document.getElementById("product-results");
+
+// Videos: no right-click menu ("Save video as", "Copy video address").
+document.addEventListener("contextmenu", event => {
+  if (event.target instanceof Element && event.target.closest("video")) event.preventDefault();
+});
 </script>
       <link rel="canonical" href="https://jordyzero.com/">
     <link rel="icon" href="/favicon.ico" sizes="48x48">
@@ -2967,7 +2972,7 @@ document.getElementById("collection-search").hidden = !document.getElementById("
 
     <main id="main">
       <section class="hero wrap" aria-labelledby="hero-title">
-        <video class="hero-video" id="hero-video" autoplay muted loop playsinline poster="https://public-files.gumroad.com/4kd58m6icjn87jstgczyxhbuwusx" aria-hidden="true" tabindex="-1">
+        <video class="hero-video" id="hero-video" autoplay muted loop playsinline controlslist="nodownload noplaybackrate noremoteplayback" disablepictureinpicture disableremoteplayback poster="https://public-files.gumroad.com/4kd58m6icjn87jstgczyxhbuwusx" aria-hidden="true" tabindex="-1">
           <source media="(max-aspect-ratio: 3/4)" src="https://public-files.gumroad.com/rp71n5iyj9671i7klsgqunzywjod" type="video/mp4">
           <source src="https://public-files.gumroad.com/n4xr7v046yhsfgzy5qnkty4eilpb" type="video/mp4">
         </video>
