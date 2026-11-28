@@ -2610,15 +2610,10 @@ main video {
   }
 }
 
-/* Article screenshots: at most 720 px wide (close-up shots used to fill the whole column and look huge), centered
-   with their caption. Phones keep the full width. */
-.article-figure img {
-  max-width: 720px;
+/* An article screenshot that would fill the whole screen (a close-up): same width as the other screenshots. */
+.article-figure-compact {
+  max-width: 840px;
   margin-inline: auto;
-}
-
-.article-figure figcaption {
-  text-align: center;
 }
 </style>
     <script type="module">
@@ -3415,7 +3410,7 @@ commissionForm?.addEventListener("submit", event => {
       <li><strong data-i18n="articleNew5Title">Les raccourcis dans la visite guidée.</strong> <span data-i18n="articleNew5Text">Sur Windows, Ctrl+Alt+E passe du fond d'écran à la fenêtre, Ctrl+Alt+N ouvre une note rapide, Ctrl+Alt+Shift+P fait revenir une note épinglée et Ctrl+Alt+Q quitte. La visite guidée les montre dès le départ.</span></li>
       <li><strong data-i18n="articleNew6Title">Batterie et mises à jour.</strong> <span data-i18n="articleNew6Text">Éco léger ne démarre que sous le niveau de batterie que vous choisissez, 30 % par défaut. L'installateur Windows ferme Stickyverse tout seul avant une mise à jour.</span></li>
     </ul>
-    <figure class="article-figure">
+    <figure class="article-figure article-figure-compact">
       <img class="shot-dark" src="https://public-files.gumroad.com/fcgn780akks0sen7d1z3ogai700u" alt="La nouvelle note Planning, avec une tâche ouverte et le bouton +" data-alt="articlePlanningAlt" width="1600" height="1300" loading="lazy">
       <img class="shot-light" src="https://public-files.gumroad.com/0ry90y6j8xj1w579xepca3n8qnh8" alt="La nouvelle note Planning, avec une tâche ouverte et le bouton +" data-alt="articlePlanningAlt" width="1600" height="1300" loading="lazy">
       <figcaption class="mono" data-i18n="articlePlanningCaption">La nouvelle note Planning : une ligne par tâche, les détails à la demande.</figcaption>
