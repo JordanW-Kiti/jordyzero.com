@@ -2541,6 +2541,13 @@ html:not([lang="en"]) .desc-en {
     font-size: 14px;
   }
 }
+
+/* Product name when it is an h2 (category pages): same look as the h3 of the home page. */
+.product-meta .product-name {
+  font-size: 21px;
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+}
 </style>
     <script type="module">
 const english = {
@@ -3328,7 +3335,7 @@ commissionForm?.addEventListener("submit", event => {
       <h2 data-i18n="articleEditionsTitle">Basic ou Pro ?</h2>
       <p data-i18n="articleEditionsText">Basic est gratuit et comprend des notes illimitées, la recherche et les exports. Pro ajoute les fonds photo, les polices système, les palettes d'interface, la Note rapide flottante, les sections illimitées, le bureau 3 × 3, le Kanban et l'agenda. Pro s'active avec une clé de licence, sans réinstaller.</p>
     </div>
-    <aside class="article-cta">
+    <div class="article-cta">
       <p class="mono" data-i18n="articleCtaLabel">WINDOWS / MACOS · BASIC GRATUIT</p>
       <h2 data-i18n="articleCtaTitle">Essayez Stickyverse.</h2>
       <a class="button" href="https://shop.jordyzero.com/l/srsnq">
@@ -3337,7 +3344,7 @@ commissionForm?.addEventListener("submit", event => {
         <path d="M5 19 19 5M5 5h14v14" fill="none" stroke="currentColor" stroke-width="1.5"/>
       </svg>
       </a>
-    </aside>
+    </div>
   </section>
 </article>
 </main>

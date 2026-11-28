@@ -2541,6 +2541,13 @@ html:not([lang="en"]) .desc-en {
     font-size: 14px;
   }
 }
+
+/* Product name when it is an h2 (category pages): same look as the h3 of the home page. */
+.product-meta .product-name {
+  font-size: 21px;
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+}
 </style>
     <script type="module">
 const english = {
@@ -3264,7 +3271,7 @@ commissionForm?.addEventListener("submit", event => {
               <span class="product-tag mono" data-i18n="p_srsnqTag">Windows / macOS</span>
             </a>
             <div class="product-meta">
-              <h3>Stickyverse</h3>
+              <h2 class="product-name">Stickyverse</h2>
               <span class="product-price" data-i18n="p_srsnqPrice">Basic gratuit</span>
             </div>
             <p data-i18n="p_srsnqText">Notes, tâches et idées, directement sur votre bureau. Votre petit univers, toujours à portée de vue.</p>
