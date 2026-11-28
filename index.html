@@ -2,8 +2,11 @@
 <html lang="fr">
   <head>
     <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-jGTqnf2JFoPK32ufSDFYkg/Aopj0XdV/K8CH9xE1Pow='; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://public-files.gumroad.com; media-src 'self' https://public-files.gumroad.com; font-src 'self' data:; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https://shop.jordyzero.com https://gumroad.com https://*.gumroad.com; upgrade-insecure-requests">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="dark light">
+    <meta name="robots" content="noai, noimageai">
+    <meta name="copyright" content="© JORDY ZERO / WILLY JORDAN KITI">
     <meta name="description" content="JORDY ZERO : des outils, des wallpapers et des expériences numériques pour un bureau qui vous ressemble. Découvrez Stickyverse, BK3D et Golden Black Hol.">
     <meta property="og:title" content="JORDY ZERO CREATIONS">
     <meta property="og:description" content="Stickyverse, BK3D et Golden Black Hol. Les créations numériques de Jordan Kiti.">
@@ -2548,6 +2551,15 @@ html:not([lang="en"]) .desc-en {
   line-height: 1.2;
   letter-spacing: -0.04em;
 }
+
+/* Images and videos: no dragging them out of the page, no selecting them, no "Save image" on a long press (iPhone). */
+main img,
+main video {
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
 </style>
     <script type="module">
 const english = {
@@ -2650,6 +2662,7 @@ const english = {
   follow: "Follow JORDY ZERO",
   footerHome: "JORDY ZERO, back to top",
   backTop: "Back to top",
+  footerRights: "All rights reserved. Any reproduction or use without written permission is prohibited.",
   home: "JORDY ZERO, home",
   navigation: "Main navigation",
   menu: "Navigation menu",
@@ -3023,9 +3036,9 @@ function filterProducts() {
   const words = normalizeSearch(searchInput.value).trim().split(/\s+/).filter(Boolean);
   products.forEach((product) => {
     const text = normalizeSearch([
-      product.querySelector("h3").textContent,
-      product.querySelector("p").textContent,
-      product.querySelector(".product-tag").textContent,
+      product.querySelector("h2, h3")?.textContent,
+      product.querySelector("p")?.textContent,
+      product.querySelector(".product-tag")?.textContent,
     ].join(" "));
     product.hidden = (activeFilter !== "all" && product.dataset.category !== activeFilter)
       || !words.every(word => text.includes(word));
@@ -3165,10 +3178,19 @@ document.getElementById("controls").hidden = false;
 if (filters) filters.hidden = products.length < 2;
 document.getElementById("collection-search").hidden = !document.getElementById("product-results");
 
-// Videos: no right-click menu ("Save video as", "Copy video address").
-document.addEventListener("contextmenu", event => {
-  if (event.target instanceof Element && event.target.closest("video")) event.preventDefault();
-});
+// Images and videos: no right-click "Save as", no dragging them out, and no shortcuts for saving the page, viewing its
+// source or opening the inspector (F12, Ctrl+Shift+I/J/C, Ctrl+U, Ctrl+S, and Cmd+Option+I/J/C, Cmd+Option+U, Cmd+S on a Mac).
+// This only slows down copying: the files a browser shows can never be fully hidden.
+const isMedia = target => target instanceof Element && target.closest("img, video, picture");
+document.addEventListener("contextmenu", event => { if (isMedia(event.target)) event.preventDefault(); });
+document.addEventListener("dragstart", event => { if (isMedia(event.target)) event.preventDefault(); });
+document.addEventListener("keydown", event => {
+  // event.code, not event.key: on a Mac, Option changes the typed letter.
+  const letter = event.code.startsWith("Key") ? event.code.slice(3) : "";
+  const inspector = ((event.ctrlKey && event.shiftKey) || (event.metaKey && event.altKey)) && ["I", "J", "C"].includes(letter);
+  const saveOrSource = (event.ctrlKey || event.metaKey) && ["S", "U"].includes(letter);
+  if (event.key === "F12" || inspector || saveOrSource) event.preventDefault();
+}, true);
 
 // Commission page: the quote request opens the visitor's mail app with a ready-to-send e-mail (texts in the page language).
 const commissionForm = document.getElementById("commission-form");
@@ -3481,7 +3503,7 @@ commissionForm?.addEventListener("submit", event => {
         </nav>
       </div>
       <div class="footer-bottom">
-        <span>© <span id="year">2026</span> JORDY ZERO / WILLY JORDAN KITI</span>
+        <span>© <span id="year">2026</span> JORDY ZERO / WILLY JORDAN KITI. <span data-i18n="footerRights">Tous droits réservés. Toute reproduction ou utilisation sans accord écrit est interdite.</span></span>
         <a class="text-link back-top" href="#main"><span data-i18n="backTop">Retour en haut</span><svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
         <path d="M5 19 19 5M5 5h14v14" fill="none" stroke="currentColor" stroke-width="1.5"/>
       </svg></a>
