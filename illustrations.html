@@ -2,7 +2,7 @@
 <html lang="fr">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-2C88VLYl1a5bL3VDq7FHxV63yOREzk7IzMdMuPWmFTk='; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://public-files.gumroad.com; media-src 'self' https://public-files.gumroad.com; font-src 'self' data:; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https://shop.jordyzero.com https://gumroad.com https://*.gumroad.com; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-bKTMUjFy8dl7CNBRhNDoMj3x8E0zx1Deun0oQtaDd4k='; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://public-files.gumroad.com; media-src 'self' https://public-files.gumroad.com; font-src 'self' data:; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https://shop.jordyzero.com https://gumroad.com https://*.gumroad.com; upgrade-insecure-requests">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="dark light">
     <meta name="robots" content="noai, noimageai">
@@ -3267,14 +3267,17 @@ if (toTop) {
   });
 }
 
-// On Gumroad, these pages are shown inside a locked frame that may not change the whole tab: a link to the shop would
-// try to open inside the frame and be refused (nothing happens). There, links and forms to other pages open in a new tab.
+// On Gumroad, these pages are shown inside a locked frame that may not change the whole tab. Gumroad pages (the shop,
+// product pages, checkout) refuse to open inside a frame, so there, links and forms to Gumroad open in a new tab.
+// Links to jordyzero.com (the menu) still open in the same tab.
 if (window.self !== window.top) {
+  const refusesFrames = url => /^https:\/\/(shop\.jordyzero\.com|([\w-]+\.)?gumroad\.com)(\/|$)/.test(url);
   for (const link of document.querySelectorAll('a[href^="http"]')) {
+    if (!refusesFrames(link.href)) continue;
     link.target = "_blank";
     link.relList.add("noopener");
   }
-  for (const form of document.querySelectorAll('form[action^="http"]')) form.target = "_blank";
+  for (const form of document.querySelectorAll('form[action^="http"]')) if (refusesFrames(form.action)) form.target = "_blank";
 }
 
 // Commission page: the quote request opens the visitor's mail app with a ready-to-send e-mail (texts in the page language).
